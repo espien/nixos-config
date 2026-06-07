@@ -34,14 +34,14 @@
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/desktop/default.nix ];
+          modules = [ ./configuration.nix ];
         };
       };
 
       homeConfigurations = {
         eetu = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home/default.nix ];
+          modules = [ ./home.nix ];
         };
       };
 
