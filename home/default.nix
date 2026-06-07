@@ -8,10 +8,9 @@
   home.username = "eetu";
   home.homeDirectory = "/home/eetu";
 
-  home.stateVersion = "26.05"; # Please read the comment before changing.
+  home.stateVersion = "26.05";
 
   nixpkgs.config.allowUnfree = true;
-
 
   home.packages = [];
 
