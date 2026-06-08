@@ -1,12 +1,6 @@
 {
 
-  description = "NixOS Flake!";
-
-  # Standard format for flake.nix
-  # `inputs` are the dependencies of the flake,
-  # and `outputs` function will return all the build results of the flake.
-  # Each item in `inputs` will be passed as a parameter to
-  # the `outputs` function after being pulled and built.
+  description = "My flake";
 
   inputs = {
 
@@ -14,34 +8,46 @@
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
+
+      # Make sure that `nixpkgs.url` and `home-manager.url` stay synchronized 
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
 
-  outputs = { 
-    self, 
-    nixpkgs, 
-    home-manager,
-    ... 
-  }: 
-    let
-      lib = nixpkgs.lib;
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  let
+    # Variables to pass below
+    
+    system = "x86_64-linux";
 
+  in
+    {
+
+      # NixOS configuration
       nixosConfigurations = {
-        nixos = lib.nixosSystem {
+
+        # Desktop configuration
+        desktop = nixpkgs.lib.nixosSystem {
+          # `inherit` can be used to pass the variables in the above `let`-statement into the configuration.nix file
           inherit system;
-          modules = [ ./configuration.nix ];
+
+          # Main nixos "system-level" configuration file
+          modules = [ ./system/desktop/configuration.nix ];
         };
+
       };
 
+      # Home-manager configuration
       homeConfigurations = {
-        eetu = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home.nix ];
+        
+        # espien home-manager configuration
+        espien = home-manager.lib.homeManagerConfiguration {
+          # Home-manager requires 'pkgs' instance
+          pkgs = nixpkgs.legacyPackages.${system};
+
+          # Main home-manager configuration file
+          modules = [ ./home-manager/espien/home.nix ];
         };
       };
 

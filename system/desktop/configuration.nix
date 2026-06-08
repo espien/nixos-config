@@ -1,10 +1,31 @@
 { config, pkgs, ... }:
 
+# Main configuration file for the desktop-system (a desktop computer).
+# After changes are done and validated, run:
+#
+#   sudo nixos-rebuild switch --flake .#desktop
+#
+# and see the magic happen...
+
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -13,7 +34,7 @@
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
-  networking.hostName = "nixos";
+  networking.hostName = "desktop";
 
   networking.networkmanager.enable = true;
 
@@ -56,29 +77,26 @@
     pulse.enable = true;
   };
 
-  users.users."eetu" = {
+  users.users."espien" = {
     isNormalUser = true;
-    description = "eetu";
-    extraGroups = [ "networkmanager" "wheel" ];
+    description = "espien";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-      kdePackages.kate
+      mullvad-vpn
     ];
   };
 
-  programs.firefox.enable = true;
-
-  nixpkgs.config.allowUnfree = true;
+  programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim
     git
-    gparted
+    wget
     bolt-launcher
   ];
 
-  programs.steam.enable = true;
-
-  system.stateVersion = "26.05"; # Did you read the comment?
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  system.stateVersion = "26.05";
 }
