@@ -1,11 +1,10 @@
 { config, pkgs, ... }:
 
-# Main configuration file for the desktop-system (a desktop computer).
+# Main configuration file for the desktop-system.
 # After changes are done and validated, run:
 #
 #   sudo nixos-rebuild switch --flake .#desktop
 #
-# and see the magic happen...
 
 {
   imports = [
@@ -85,6 +84,7 @@
       "wheel"
     ];
     packages = with pkgs; [
+      bolt-launcher
       mullvad-vpn
     ];
   };
@@ -95,7 +95,6 @@
     vim
     git
     wget
-    bolt-launcher
   ];
 
   system.stateVersion = "26.05";

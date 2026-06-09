@@ -1,11 +1,15 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  nix-vscode-extensions,
+  ...
+}:
 
 # Main configuration file for espien
 # After changes are done and validated, run:
 #
 #   home-manager switch --flake .
 #
-# and see the magic happen...
 
 let
   packagesRoot = ../packages;
@@ -20,23 +24,26 @@ in
     "${packagesRoot}/firefox.nix"
   ];
 
-  home = {
-    username = "espien";
-    homeDirectory = "/home/espien";
-  };
-
-  programs.home-manager.enable = true;
-
   nixpkgs = {
+    overlays = [
+      nix-vscode-extensions.overlays.default
+    ];
     config = {
       allowUnfree = true;
     };
   };
 
+  home = {
+    username = "espien";
+    homeDirectory = "/home/espien";
+  };
+
   home.packages = with pkgs; [
     nixd
-    nixfmt-rfc-style
+    nixfmt
   ];
+
+  programs.home-manager.enable = true;
 
   home.stateVersion = "26.05";
 }
