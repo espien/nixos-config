@@ -1,7 +1,6 @@
 {
-  config,
+  inputs,
   pkgs,
-  nix-vscode-extensions,
   ...
 }:
 
@@ -16,6 +15,7 @@ let
 in
 {
   imports = [
+    "${packagesRoot}/calibre.nix"
     "${packagesRoot}/zsh.nix"
     "${packagesRoot}/discord.nix"
     "${packagesRoot}/git.nix"
@@ -26,7 +26,7 @@ in
 
   nixpkgs = {
     overlays = [
-      nix-vscode-extensions.overlays.default
+      inputs.nix-vscode-extensions.overlays.default
     ];
     config = {
       allowUnfree = true;
@@ -38,10 +38,7 @@ in
     homeDirectory = "/home/espien";
   };
 
-  home.packages = with pkgs; [
-    nixd
-    nixfmt
-  ];
+  home.packages = [ ];
 
   programs.home-manager.enable = true;
 

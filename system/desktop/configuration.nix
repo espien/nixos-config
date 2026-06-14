@@ -19,6 +19,8 @@
 
   nix = {
     settings = {
+      auto-optimise-store = true;
+      # Enable flakes
       experimental-features = [
         "nix-command"
         "flakes"
@@ -26,8 +28,23 @@
     };
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 10;
+      };
+      efi = {
+        canTouchEfiVariables = true;
+      };
+    };
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
 
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
@@ -53,10 +70,22 @@
     LC_TIME = "fi_FI.UTF-8";
   };
 
-  services.xserver.enable = true;
-
-  services.displayManager.sddm.enable = true;
+  # Enable KDE
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    elisa
+    kate
+    konsole
+    qrca
+    discover
+    gwenview
+    kwalletmanager
+    kwallet
+    spectacle
+  ];
 
   services.xserver.xkb = {
     layout = "fi";
@@ -92,9 +121,16 @@
   programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
+    alacritty
     vim
     git
     wget
+    nixd
+    nixfmt
+    jetbrains.idea
+    openjdk25
+    kotlin
+    maven
   ];
 
   system.stateVersion = "26.05";

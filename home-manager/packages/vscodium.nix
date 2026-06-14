@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  nix-vscode-extensions,
   ...
 }:
 {
@@ -23,6 +22,13 @@
 
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
+        "nix.serverSettings" = {
+          "nixd" = {
+            "formatting" = {
+              "command" = [ "nixfmt" ];
+            };
+          };
+        };
       };
     };
   };

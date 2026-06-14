@@ -1,7 +1,5 @@
 { config, pkgs, ... }:
 
-# Check: https://github.com/iBurley/nixos/blob/main/apps/firefox.nix
-
 {
   programs.firefox = {
     enable = true;
@@ -43,7 +41,11 @@
             toolbar = true;
             bookmarks = [
               {
-                name = "NixOS search";
+                name = "YouTube";
+                url = "https://www.youtube.com/";
+              }
+              {
+                name = "NixOS Packages";
                 url = "https://search.nixos.org/packages";
               }
               {
