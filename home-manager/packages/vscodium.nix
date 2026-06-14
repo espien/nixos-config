@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }:
@@ -10,7 +9,7 @@
 
     profiles.default = {
 
-      extensions = with pkgs.nix-vscode-extensions.open-vsx; [
+      extensions = with pkgs.open-vsx; [
         jnoortheen.nix-ide
         eamodio.gitlens
       ];
@@ -20,6 +19,7 @@
         "editor.formatOnSave" = true;
         "editor.tabSize" = 2;
 
+        # [ Nix ]
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
         "nix.serverSettings" = {
@@ -29,6 +29,7 @@
             };
           };
         };
+        "[nix]"."editor.defaultFormatter" = "jnoortheen.nix-ide";
       };
     };
   };

@@ -78,7 +78,6 @@
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     elisa
     kate
-    konsole
     qrca
     discover
     gwenview
@@ -121,7 +120,6 @@
   programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
-    alacritty
     vim
     git
     wget

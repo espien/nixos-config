@@ -15,6 +15,7 @@ let
 in
 {
   imports = [
+    "${packagesRoot}/alacritty.nix"
     "${packagesRoot}/calibre.nix"
     "${packagesRoot}/zsh.nix"
     "${packagesRoot}/discord.nix"
