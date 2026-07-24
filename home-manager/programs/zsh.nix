@@ -1,15 +1,12 @@
-{ config, pkgs, ... }:
+{ ... }:
 
-let
-  myAliases = {
-    ll = "ls -l";
-    la = "ls -la";
-  };
-in
 {
   programs.zsh = {
     enable = true;
-    shellAliases = myAliases;
+    shellAliases = {
+      ll = "ls -l";
+      la = "ls -la";
+    };
     initContent = ''
       [[ $- == *i* ]] && fastfetch # Run fastfetch only on interactive shells
     '';
