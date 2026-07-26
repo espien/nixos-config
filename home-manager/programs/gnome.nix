@@ -10,6 +10,17 @@
         gnomeExtensions.blur-my-shell.extensionUuid
         gnomeExtensions.dash-to-dock.extensionUuid
       ];
+
+      favorite-apps = [
+        "org.gnome.Nautilus.desktop"
+        "Alacritty.desktop"
+        "codium.desktop"
+        "firefox.desktop"
+        "idea.desktop"
+        "Bolt.desktop"
+        "steam.desktop"
+        "discord.desktop"
+      ];
     };
 
     # -- Interface --
