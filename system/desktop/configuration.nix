@@ -52,9 +52,15 @@
     wget
     qimgv
     qbittorrent
+    zip
+    unzip
+    gimp
 
     # -- Development --
     jetbrains.idea
+    go
+    jdk21
+    maven
 
     # -- Nix --
     nixd
