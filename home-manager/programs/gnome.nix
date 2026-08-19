@@ -13,7 +13,7 @@
 
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
-        "Alacritty.desktop"
+        "kitty.desktop"
         "codium.desktop"
         "firefox.desktop"
         "idea.desktop"
