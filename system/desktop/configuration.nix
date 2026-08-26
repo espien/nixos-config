@@ -57,7 +57,7 @@
     gimp
 
     # -- Development --
-    jetbrains.idea
+    # IDEA and its plugins live in modules/idea.nix
     go
     jdk21
     maven
