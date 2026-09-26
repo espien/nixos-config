@@ -53,14 +53,21 @@
     qimgv
     qbittorrent
     zip
+    xz
     unzip
     gimp
 
+    # LaTeX
+    texstudio
+    texliveFull
+
     # -- Development --
     # IDEA and its plugins live in modules/idea.nix
-    go
     jdk21
     maven
+    nodejs
+
+    bruno
 
     # -- Nix --
     nixd

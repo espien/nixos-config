@@ -7,7 +7,6 @@
       extensions = with pkgs.open-vsx; [
         jnoortheen.nix-ide
         eamodio.gitlens
-        golang.go
       ];
 
       userSettings = {
