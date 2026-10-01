@@ -50,12 +50,14 @@
     vim
     git
     wget
-    qimgv
-    qbittorrent
     zip
     xz
     unzip
+
+    # Other software
     gimp
+    qbittorrent
+    qimgv
 
     # LaTeX
     texstudio
