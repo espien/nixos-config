@@ -67,9 +67,15 @@
     # IDEA and its plugins live in modules/idea.nix
     jdk21
     maven
+
     nodejs
 
     bruno
+
+    gcc
+    gdb
+
+    gnumake
 
     # -- Nix --
     nixd
