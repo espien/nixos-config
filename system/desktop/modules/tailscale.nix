@@ -5,7 +5,7 @@
     enable = true;
     openFirewall = true;
   };
-  # Keep tailscaled off by default; start manually when hosting.
+  # Keep tailscaled off by default.
   systemd.services.tailscaled.wantedBy = lib.mkForce [ ];
 
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [

@@ -11,7 +11,7 @@
     openFirewall = false;
     user = "espien";
   };
-  # Keep jellyfin off by default; start manually when needed.
+  # Keep jellyfin off by default.
   systemd.services.jellyfin.wantedBy = lib.mkForce [ ];
 
   programs.steam.enable = true;
