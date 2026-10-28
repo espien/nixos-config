@@ -38,7 +38,7 @@ nix flake update
 │       ├── gnome.nix
 │       ├── idea.nix              # IntelliJ IDEA with plugins
 │       ├── locale.nix
-│       ├── services.nix          # Docker, Steam, Mullvad, Jellyfin, printing
+│       ├── services.nix          # Docker, Steam, Mullvad, Jellyfin
 │       └── tailscale.nix
 └── home-manager/
     ├── espien/home.nix           # Home Manager entry point for my user
