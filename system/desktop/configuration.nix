@@ -74,6 +74,7 @@
 
     gcc
     gdb
+    clang-tools
 
     gnumake
 

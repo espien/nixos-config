@@ -5,8 +5,9 @@
     enable = true;
     profiles.default = {
       extensions = with pkgs.open-vsx; [
-        jnoortheen.nix-ide
         eamodio.gitlens
+        jnoortheen.nix-ide
+        xaver.clang-format
       ];
 
       userSettings = {
@@ -25,6 +26,8 @@
           };
         };
         "[nix]"."editor.defaultFormatter" = "jnoortheen.nix-ide";
+
+        "[c]"."editor.defaultFormatter" = "xaver.clang-format";
       };
     };
   };
